@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CelestiaLink</title>
+    <link rel="stylesheet" href="celestial.css">
+    <script src="celestial.js"></script>
+
+</head>
+<body>
+
+    <!--first section-->
+
+    <section class="header">
+        <div class="text_box">
+            <h1>CELESTIALINK</h1>
+            <P>CelestiaLink is your partner in acheiving connectivity excellence. This is where connection <br> meets innovation, and the future unfolds seamlessly.</P>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const mbpsDisplay = document.getElementById('mbpsDisplay');
+                
+                // Function to update WiFi Mbps
+                function updateMbps() {
+                    // Simulate a random increase/decrease in Mbps
+                    const currentMbps = parseFloat(mbpsDisplay.textContent) || 4;
+                    const newMbps = currentMbps + (Math.random() * 5 - 2); // Random change between +70 and -5
+                    mbpsDisplay.textContent = newMbps.toFixed(2);
+                }
+                // Update every second
+                setInterval(updateMbps, 1000);
+            
+                // Initial update
+                updateMbps();
+            });
+            </script>
+            
+
+    </section>
+
+
+    <!--second section-->
+
+    <div class="modems_pricing">
+        <h1>Modems and Pricing</h1>
+
+        <div class="row">
+            <div class="container">
+                <h2>Celestial Connect</h2>
+                <hr>
+                <ul>
+                    <li>Fast data.</li>
+                    <li>Can connect up to 10-15 users.</li>
+                </ul>
+                <button>36,000 Naira</button>
+                <p>Stay connected seamlessly with Celestial Connect. Enjoy reliable fast data transfer with our basic module.</p>
+            </div>
+
+            <div class="container">
+                <h2>Celestial Guardian</h2>
+                <hr>
+                <ul>
+                    <li>Advanced Protocols.</li>
+                    <li>Access to worry-free online experience.</li>
+                </ul>
+                <button>42,000 Naira</button>
+                <p>Ensure your online safety with Celestial Guardian This module offers online safe and worry free data.</p>
+            </div>
+
+            <div class="container">
+                <h2>Celestial Boost</h2>
+                <hr>
+                <ul>
+                    <li>High speed data transfer.</li>
+                    <li>Priority network.</li>
+                </ul>
+                <button>50,000 Naira</button>
+                <p>Supercharge your connectivity with faster internet speed and improved performance.</p>
+            </div>
+
+            <div class="container">
+                <h2>Celestial Unlimited</h2>
+                <hr>
+                <ul>
+                    <li>Unlimited data usage.</li>
+                    <li>Unlimited users.</li>
+                    <li>Faster internet speed and performance.</li>
+                </ul>
+                <button>60,500 Naira</button>
+                <p>Unleash limitless possibilities with Celestial Unlimited. Enjoy unrestricted access to data.</p>
+            </div>
+        </div>
+        
+    </div>
+
+
+    <!--Third section-->
+
+    <div class="about_us">
+        <h1>About Us</h1>
+
+        <div class="superb">
+            <div class="about_celestial">
+                <h2>About CelestiaLink</h2>
+                <p>Welcome to CelestiaLink, where connectivitytranscends boundries and innovation takes flight.At CelestiaLink, we are dedicated to <br> ushering in a new era of seamless communication, ensuring that individuals and businesses <br> stay effortlessly connected to the world.</p>
+            </div>
+
+            <div class="vision">
+                <h2>Our Vision</h2>
+                <p>CelestiaLinkenvisions a future where connectivity is not just a service but an experience that empowers, inspires <br> and transforms lives. We strive to be at the forefront of technological evolution, providing cutting-edge solutions that redefine <br> the way we connect, communicate and collaborate.</p>
+
+                <div class="vanguard">
+                    <p>CelestiaLink is proudly powered by TechVanguard and WebWise, a subsidiary of Mirak Oracle. As part of the esteemed <br> Mirakle Group, along TechVanguard, we draw on a rich legacy of expertise and innovation to deliver solutions that exceed expectations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Last section-->
+
+    <section class="footer">
+        <h4>Contact Us</h4>
+        <div class="pizza">
+            <p>If you are looking to enhance your connectivity capabilities, we're here to help. Reach out to us at <br> <a href="mailto:miraklegroupinfo@gmail.com">miraklegroupinfo@gmail.com</a></p>
+        </div>
+        <div class="follow">
+            <ul>
+                <li><a href="https://www.facebook.com/miraklegroup">Facebook</a></li>
+                <li><a href="https://www.instagram.com/mirakle.group">Instagram</a></li>
+                <li><a href="https://twitter.com/mirakle_group">Twitter</a></li>
+            </ul>
+        </div>
+
+        <div class="copy">
+            <p><span>&copy;</span>     CelestiaLink. All rights reserved. Powered by WebWise, a proud subsidiary of Mirak Oracle, and a proud member of the Mirakle Group, along with TechVanguard.</p>
+        </div>
+    </section>
+
+
+
+    
+    
+</body>
+</html>
