@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CelestiaLink</title>
     <link rel="stylesheet" href="celestial.css">
     <script src="celestial.js"></script>
-
 </head>
+
 <body>
 
     <!--first section-->
@@ -15,12 +16,13 @@
     <section class="header">
         <div class="text_box">
             <h1>CELESTIALINK</h1>
-            <P>CelestiaLink is your partner in acheiving connectivity excellence. This is where connection <br> meets innovation, and the future unfolds seamlessly.</P>
+            <p>CelestiaLink is your partner in achieving connectivity excellence. This is where connection <br> meets innovation, and the future unfolds seamlessly.</p>
         </div>
+        <div id="mbpsDisplay"></div> <!-- Add this div for live Mbps display -->
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 const mbpsDisplay = document.getElementById('mbpsDisplay');
-                
+
                 // Function to update WiFi Mbps
                 function updateMbps() {
                     // Simulate a random increase/decrease in Mbps
@@ -30,12 +32,21 @@
                 }
                 // Update every second
                 setInterval(updateMbps, 1000);
-            
+
                 // Initial update
                 updateMbps();
             });
-            </script>
-            
+        </script>
+
+
+    </section>
+
+    <!-- Rest of your HTML code -->
+
+</body>
+
+</html>
+
 
     </section>
 
