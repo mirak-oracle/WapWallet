@@ -161,6 +161,70 @@
         <h1>WapWallet</h1>
         <h2>Unlocking Crypto's Full Potential with AI-Driven Insights</h2>
     </header>
+    <title>Gas Prices and Market Data</title>
+    <style>
+        #gas-prices-content, #market-data-content {
+            margin: 20px 0;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+    </style>
+    <script>
+        async function fetchGasPrices() {
+            try {
+                const response = await fetch('https://api.blockcypher.com/v1/eth/main');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.json();
+                const content = document.getElementById('gas-prices-content');
+                content.innerHTML = `
+                    High: ${data.high_gas_price} Gwei<br>
+                    Medium: ${data.medium_gas_price} Gwei<br>
+                    Low: ${data.low_gas_price} Gwei
+                `;
+            } catch (error) {
+                console.error('Error fetching gas prices:', error);
+                const content = document.getElementById('gas-prices-content');
+                content.innerHTML = 'Failed to fetch gas prices. Please try again later.';
+            }
+        }
+
+        async function fetchMarketData() {
+            try {
+                const response = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.json();
+                const content = document.getElementById('market-data-content');
+                content.innerHTML = data.map(coin => `
+                    <li>${coin.name} (${coin.symbol.toUpperCase()}): $${coin.current_price}</li>
+                `).join('');
+            } catch (error) {
+                console.error('Error fetching market data:', error);
+                const content = document.getElementById('market-data-content');
+                content.innerHTML = 'Failed to fetch market data. Please try again later.';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchGasPrices();
+            fetchMarketData();
+        });
+    </script>
+</head>
+<body>
+    <h1>Gas Prices</h1>
+    <div id="gas-prices-content">Loading gas prices...</div>
+
+    <h1>Market Data</h1>
+    <ul id="market-data-content">Loading market data...</ul>
+</body>
+</html>
+
     <div class="container">
         <div class="card" id="gas-prices">
             <h3>Live Gas Prices</h3>
