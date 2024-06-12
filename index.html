@@ -674,8 +674,6 @@ if (amount >= 10 && amount < 50) {
         // Check price alerts periodically
         setInterval(checkPriceAlerts, 60000); // Check every minute
 
-        // Populate dropdown on page load
-        window.onload = populateCryptoOptions;
         async function fetchGasPrices() {
             const response = await fetch('https://api.blockcypher.com/v1/eth/main');
             const data = await response.json();
