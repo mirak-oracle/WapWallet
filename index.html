@@ -1,155 +1,697 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CelestiaLink</title>
-    <link rel="stylesheet" href="celestial.css">
-    <script src="celestial.js"></script>
+    <title>WapWallet</title>
+
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-03NYM2DSY1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-03NYM2DSY1');
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #3f51b5;
+            color: white;
+            width: 100%;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .card {
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .card h3 {
+            margin-top: 0;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group input, .form-group select {
+            width: calc(100% - 20px);
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+        }
+        .form-group button {
+            padding: 0.5rem 1rem;
+            background-color: #3f51b5;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #303f9f;
+        }
+        .converter label, .converter select, .converter input {
+            display: block;
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+        .converter button {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        footer {
+            background-color: #f5f5f5;
+            padding: 1rem;
+            text-align: center;
+            width: 100%;
+        }
+          
+    .tradingview-widget-container {
+        max-width: 100%;
+        overflow: auto;
+    }
+    @media (max-width: 600px) {
+        .tradingview-widget-container {
+            height: 400px; /* Adjust height for smaller screens */
+        }
+       .wapwallet-container {
+        text-align: center;
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        border-radius: 8px;
+    }
+
+    .wapwallet-container h1 {
+        color: #333;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .wapwallet-container .form-group {
+        margin-bottom: 15px;
+    }
+
+    .wapwallet-container label {
+        display: block;
+        margin-bottom: 5px;
+        color: #666;
+    }
+
+    .wapwallet-container input, .wapwallet-container select {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .wapwallet-container button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .wapwallet-container button:hover {
+        background-color: #0056b3;
+    }
+
+    .wapwallet-container #budgetList, .wapwallet-container #investmentList, .wapwallet-container #aiAdvice {
+        margin-top: 20px;
+        text-align: left;
+    }
+
+    .wapwallet-container .budget-item, .wapwallet-container .investment-item {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+        }
+
+
+    </style>
 </head>
-
 <body>
-
-    <!--first section-->
-
-    <section class="header">
-        <div class="text_box">
-            <h1>CELESTIALINK</h1>
-            <p>CelestiaLink is your partner in achieving connectivity excellence. This is where connection <br> meets innovation, and the future unfolds seamlessly. <div id="mbpsDisplay"></div></p>
---> ^^^Live mbpsDisplay^^^
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const mbpsDisplay = document.getElementById('mbpsDisplay');
-
-                // Function to update WiFi Mbps
-                function updateMbps() {
-                    // Simulate a random increase/decrease in Mbps
-                    const currentMbps = parseFloat(mbpsDisplay.textContent) || 4;
-                    const newMbps = currentMbps + (Math.random() * 5 - 2); // Random change between +70 and -5
-                    mbpsDisplay.textContent = newMbps.toFixed(2);
-                }
-                // Update every second
-                setInterval(updateMbps, 1000);
-
-                // Initial update
-                updateMbps();
-            });
+    <header>
+        <h1>WapWallet</h1>
+        <h2>Unlocking Crypto's Full Potential with AI-Driven Insights</h2>
+    </header>
+    <div class="container">
+        <div class="card" id="gas-prices">
+            <h3>Live Gas Prices</h3>
+            <div id="gas-prices-content">Loading...</div>
+        </div>
+        <div class="card" id="market-data">
+            <h3>Live Market Data</h3>
+            <ul id="market-data-content">Loading...</ul>
+        </div>
+        <div class="card" id="stock-data">
+            <h3>Live Stock Market Data</h3>
+            <div id="stock-data-content">
+        <div class="tradingview-widget-container">
+        <div id="tradingview_f0b8f"></div>
+        <div class="tradingview-widget-copyright">
+            <a href="https://www.tradingview.com" rel="noopener" target="_blank">
+                <span class="blue-text">Market Data</span>
+            </a> by TradingView
+        </div>
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+        new TradingView.widget({
+            "width": 980,
+            "height": 610,
+            "symbol": "NASDAQ:AAPL",
+            "interval": "D",
+            "timezone": "Etc/UTC",
+            "theme": "light",
+            "style": "1",
+            "locale": "en",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "allow_symbol_change": true,
+            "watchlist": [
+                "NASDAQ:AAPL",
+                "NASDAQ:GOOGL",
+                "NASDAQ:MSFT",
+                "NASDAQ:AMZN",
+                "NASDAQ:TSLA",
+                "NYSE:BRK.B",
+                "NYSE:V",
+                "NASDAQ:FB",
+                "NYSE:JPM",
+                "NASDAQ:NFLX",
+                "NYSE:JNJ",
+                "NYSE:WMT",
+                "NYSE:PG",
+                "NASDAQ:NVDA",
+                "NYSE:DIS",
+                "NGSE:DANGCEM",
+                "NGSE:MTNN",
+                "NGSE:GUARANTY",
+                "NGSE:ZENITHBANK",
+                "NGSE:SEPLAT",
+                "NGSE:FBNH",
+                "NGSE:UBA",
+                "NGSE:ACCESS",
+                "NGSE:NESTLE",
+                "NGSE:BLOOM",
+                "NGSE:WAPCO",
+                "NGSE:FO",
+                "NGSE:PZ",
+                "NGSE:CADBURY",
+                "NGSE:TOTAL",
+                "NGSE:MOBIL",
+                "NGSE:CONOIL",
+                "JSE:NPN",
+                "JSE:SOL",
+                "JSE:FSR",
+                "JSE:MTN",
+                "JSE:AGL",
+                "JSE:SHP",
+                "JSE:BAT",
+                "JSE:REM",
+                "JSE:BTI",
+                "JSE:IMP",
+                "JSE:BIL",
+                "JSE:VOD",
+                "JSE:EXX",
+                "JSE:TKG",
+                "JSE:DSY",
+                "JSE:ABG",
+                "NSE:EQTY",
+                "NSE:KCB",
+                "NSE:SCOM",
+                "NSE:COOP",
+                "EGX:COMI",
+                "EGX:EFID",
+                "EGX:ORHD",
+                "EGX:ESRS"
+            ],
+            "details": true,
+            "hotlist": true,
+            "calendar": true,
+            "news": ["headlines"]
+        });
         </script>
+    </div>
+         
+<div class="wapwallet-container">
+    <h1>SmartFinance</h1>
+    <div class="form-group">
+        <label for="budget">Enter your budget</label>
+        <input type="number" id="budget" placeholder="Enter budget amount">
+    </div>
+    <div class="form-group">
+        <label for="expense">Enter your expense</label>
+        <input type="number" id="expense" placeholder="Enter expense amount">
+    </div>
+    <button onclick="addExpense()">Add Expense</button>
+    <div id="budgetList"></div>
 
+    <h2>InvestBot</h2>
+    <div class="form-group">
+        <label for="amount">Enter amount to invest</label>
+        <input type="number" id="amount" placeholder="Enter investment amount">
+    </div>
+    <button onclick="invest()">Invest</button>
+    <div id="investmentList"></div>
+    <div id="aiAdvice"></div>
 
-    </section>
-
-    <!-- Rest of your HTML code -->
-
-</body>
-
-</html>
-
-
-    </section>
-
-
-    <!--second section-->
-
-    <div class="modems_pricing">
-        <h1>Modems and Pricing</h1>
-
-        <div class="row">
-            <div class="container">
-                <h2>Celestial Connect</h2>
-                <hr>
-                <ul>
-                    <li>Fast data.</li>
-                    <li>Can connect up to 10-15 users.</li>
-                </ul>
-                <button>36,000 Naira</button>
-                <p>Stay connected seamlessly with Celestial Connect. Enjoy reliable fast data transfer with our basic module.</p>
-            </div>
-
-            <div class="container">
-                <h2>Celestial Guardian</h2>
-                <hr>
-                <ul>
-                    <li>Advanced Protocols.</li>
-                    <li>Access to worry-free online experience.</li>
-                </ul>
-                <button>42,000 Naira</button>
-                <p>Ensure your online safety with Celestial Guardian This module offers online safe and worry free data.</p>
-            </div>
-
-            <div class="container">
-                <h2>Celestial Boost</h2>
-                <hr>
-                <ul>
-                    <li>High speed data transfer.</li>
-                    <li>Priority network.</li>
-                </ul>
-                <button>50,000 Naira</button>
-                <p>Supercharge your connectivity with faster internet speed and improved performance.</p>
-            </div>
-
-            <div class="container">
-                <h2>Celestial Unlimited</h2>
-                <hr>
-                <ul>
-                    <li>Unlimited data usage.</li>
-                    <li>Unlimited users.</li>
-                    <li>Faster internet speed and performance.</li>
-                </ul>
-                <button>60,500 Naira</button>
-                <p>Unleash limitless possibilities with Celestial Unlimited. Enjoy unrestricted access to data.</p>
-            </div>
+    <h2>Investment Platform: Bamboo</h2>
+    <div>
+        <p><a href="https://app.investbamboo.com/invite/miracle758827" target="_blank">Bamboo</a> - Invest in the US stock markets right from your phone with Bamboo. Sign up now in less than 5 minutes and get a bonus for signing up!</p>
+        <p><a href="https://learn.investbamboo.com/" target="_blank">Learn more about Bamboo</a></p>
+        <h3>Features:</h3>
+        <ul>
+            <li>Easy signup process and user-friendly interface.</li>
+            <li>Access to US stocks like Apple, Amazon, and Google.</li>
+            <li>Educational resources to help you understand investing.</li>
+        </ul>
+        <h3>Benefits:</h3>
+        <ul>
+            <li>Invest with as little as $10.</li>
+            <li>Diversify your portfolio with a range of investment options.</li>
+            <li>Earn a signup bonus.</li>
+        </ul>
+        <h3>More Information:</h3>
+        <p>Bamboo offers a seamless way to invest in global markets. It provides a secure platform to grow your investments. Enjoy the flexibility of investing from your mobile device.</p>
+    </div>
         </div>
+        <div class="card" id="mining-calculator">
+            <h3>Mining Calculator</h3>
+            <div class="form-group">
+                <input type="text" id="hashrate" placeholder="Hashrate">
+            </div>
+            <div class="form-group">
+                <input type="text" id="block-reward" placeholder="Block Reward">
+            </div>
+            <div class="form-group">
+                <input type="text" id="difficulty" placeholder="Difficulty">
+            </div>
+            <div class="form-group">
+                <button onclick="calculateMining()">Calculate</button>
+            </div>
+            <div id="mining-result"></div>
+        </div>
+
+    <title>Live Cryptocurrency Prices</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        select, button {
+            margin-top: 10px;
+            padding: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cryptocurrency Converter</h1>
+    <div>
+        <label for="crypto">Cryptocurrency:</label>
+        <select id="crypto">
+            <option value="bitcoin">Bitcoin (BTC)</option>
+            <option value="ethereum">Ethereum (ETH)</option>
+            <option value="binancecoin">Binance Coin (BNB)</option>
+            <option value="ripple">Ripple (XRP)</option>
+            <option value="cardano">Cardano (ADA)</option>
+            <option value="dogecoin">Dogecoin (DOGE)</option>
+            <option value="solana">Solana (SOL)</option>
+            <option value="polkadot">Polkadot (DOT)</option>
+            <option value="litecoin">Litecoin (LTC)</option>
+            <option value="chainlink">Chainlink (LINK)</option>
+            <option value="bitcoin-cash">Bitcoin Cash (BCH)</option>
+            <option value="stellar">Stellar (XLM)</option>
+            <option value="vechain">VeChain (VET)</option>
+            <option value="filecoin">Filecoin (FIL)</option>
+            <option value="tron">TRON (TRX)</option>
+            <option value="eos">EOS (EOS)</option>
+            <option value="monero">Monero (XMR)</option>
+            <option value="tezos">Tezos (XTZ)</option>
+            <option value="cosmos">Cosmos (ATOM)</option>
+            <option value="algorand">Algorand (ALGO)</option>
+        </select>
+    </div>
+    <div>
+        <label for="fiat">Fiat Currency:</label>
+        <select id="fiat">
+            <option value="usd">US Dollar (USD)</option>
+            <option value="eur">Euro (EUR)</option>
+            <option value="gbp">British Pound (GBP)</option>
+            <option value="jpy">Japanese Yen (JPY)</option>
+            <option value="aud">Australian Dollar (AUD)</option>
+            <option value="cad">Canadian Dollar (CAD)</option>
+            <option value="chf">Swiss Franc (CHF)</option>
+            <option value="cny">Chinese Yuan (CNY)</option>
+            <option value="inr">Indian Rupee (INR)</option>
+            <option value="ngn">Nigerian Naira (NGN)</option>
+            <option value="kes">Kenyan Shilling (KES)</option>
+            <option value="ghs">Ghanaian Cedi (GHS)</option>
+            <option value="zmw">Zambian Kwacha (ZMW)</option>
+            <option value="egp">Egyptian Pound (EGP)</option>
+            <option value="sgd">Singapore Dollar (SGD)</option>
+            <option value="hkd">Hong Kong Dollar (HKD)</option>
+            <option value="nzd">New Zealand Dollar (NZD)</option>
+            <option value="krw">South Korean Won (KRW)</option>
+            <option value="sek">Swedish Krona (SEK)</option>
+            <option value="mxn">Mexican Peso (MXN)</option>
+            <option value="nok">Norwegian Krone (NOK)</option>
+            <option value="try">Turkish Lira (TRY)</option>
+            <option value="rub">Russian Ruble (RUB)</option>
+            <option value="zar">South African Rand (ZAR)</option>
+            <option value="brl">Brazilian Real (BRL)</option>
+        </select>
+    </div>
+    <div>
+        <button onclick="updatePrice()">Get Price</button>
+    </div>
+    <h2>Price: <span id="price">N/A</span></h2>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            function getExchangeRate(crypto, fiat) {
+                const apiUrl = `https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=${fiat}`;
+
+                return fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data[crypto] && data[crypto][fiat]) {
+                            return data[crypto][fiat];
+                        } else {
+                            throw new Error('Exchange rate not found');
+                        }
+                    });
+            }
+
+            window.updatePrice = function() {
+                const cryptoSelect = document.getElementById('crypto');
+                const fiatSelect = document.getElementById('fiat');
+                const priceSpan = document.getElementById('price');
+
+                const crypto = cryptoSelect.value;
+                const fiat = fiatSelect.value;
+
+                getExchangeRate(crypto, fiat)
+                    .then(rate => {
+                        priceSpan.innerText = `${rate} ${fiat.toUpperCase()}`;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching exchange rate:', error);
+                        priceSpan.innerText = 'N/A';
+                    });
+            }
+        });
+    </script>
+
+        </div>
+
+        <div class="card" id="defi-tools">
+            <h3>DeFi Tools</h3>
+            <div class="form-group">
+                <button onclick="openDeFiPlatform('Aave')">Open Aave</button>
+                <button onclick="openDeFiPlatform('Compound')">Open Compound</button>
+            </div>
+            <p>Explore decentralized finance (DeFi) tools like lending, borrowing, and liquidity provision on trusted platforms.</p>
+        </div>
+
+        <div class="card" id="list-of-tools">
+            <h3>❗🔥 List of Tools You Need to Be in Crypto Space! 🔥❗</h3>
+            <h4>Social Account:</h4>
+            <ol>
+                <li>WhatsApp</li>
+                <li>Discord</li>
+                <li>Twitter</li>
+                <li>Telegram</li>
+            </ol>
+            <h4>DEX Wallets:</h4>
+            <ol>
+                <li>MetaMask</li>
+                <li>Trust Wallet</li>
+                <li>Phantom/Solfare Wallet</li>
+            </ol>
+            <h4>CEX Wallets:</h4>
+            <ol>
+                <li>Binance</li>
+                <li>MEXC</li>
+                <li>OKX</li>
+                <li>Bybit</li>
+                <li>Kucoin</li>
+            </ol>
+            <h4>Common Gas Fees to Own in DEX Wallets:</h4>
+            <ol>
+                <li>Ethereum</li>
+                <li>BNB</li>
+                <li>Arbitrum</li>
+                <li>MATIC</li>
+                <li>USDT</li>
+                <li>BASE</li>
+                <li>USDC</li>
+                <li>SOL</li>
+            </ol>
+            <h4>Browsers:</h4>
+            <ol>
+                <li>Mises</li>
+                <li>Kiwi</li>
+                <li>Brave</li>
+                <li>Chrome</li>
+            </ol>
+            <p>Make sure you create your wallet extensions in Mises and Kiwi. You can get Trust Wallet extension, MetaMask Extension, Binance extension, and a host of others as well.</p>
+        </div>
+        <div class="card" id="marketplace-links">
+            <h3>Crypto Marketplace</h3>
+            <button onclick="openPancakeSwap()">OPEN PANCAKESWAP</button>
+            <button onclick="openUniswap()">OPEN UNISWAP</button>
+        </div>
+    </div>
+    <footer>
+        <p>©WapWallet. All rights reserved.</p>
+    </footer>
+
+    <script>
+      
+    let budget = 0;
+    let expenses = [];
+    let investments = [];
+
+    function addExpense() {
+        const budgetInput = document.getElementById('budget');
+        const expenseInput = document.getElementById('expense');
+
+        if (budgetInput.value) {
+            budget = parseFloat(budgetInput.value);
+            budgetInput.value = '';
+        }
+
+        if (expenseInput.value) {
+            const expense = parseFloat(expenseInput.value);
+            expenses.push(expense);
+            expenseInput.value = '';
+            updateBudgetList();
+        }
+    }
+
+    function updateBudgetList() {
+        const budgetList = document.getElementById('budgetList');
+        budgetList.innerHTML = `<p>Total Budget: $${budget}</p>`;
+
+        let totalExpenses = 0;
+        expenses.forEach(expense => {
+            budgetList.innerHTML += `<div class="budget-item">Expense: $${expense}</div>`;
+            totalExpenses += expense;
+        });
+
+        budgetList.innerHTML += `<p>Total Expenses: $${totalExpenses}</p>`;
+        budgetList.innerHTML += `<p>Remaining Budget: $${budget - totalExpenses}</p>`;
+    }
+
+    function invest() {
+        const amountInput = document.getElementById('amount');
+        const amount = parseFloat(amountInput.value);
+
+        if (amount) {
+            investments.push(amount);
+            amountInput.value = '';
+            updateInvestmentList();
+            provideAIAdvice(amount);
+        }
+    }
+
+    function updateInvestmentList() {
+        const investmentList = document.getElementById('investmentList');
+        investmentList.innerHTML = '<h3>Investments</h3>';
+
+        investments.forEach((investment, index) => {
+            investmentList.innerHTML += `<div class="investment-item">Investment ${index + 1}: $${investment}</div>`;
+        });
+    }
+
+    function provideAIAdvice(amount) {
+        const aiAdvice = document.getElementById('aiAdvice');
+        aiAdvice.innerHTML = '<h3>AI Investment Advice</h3>';
+
+        // Simple AI logic for demonstration purposes
+        if (amount < 50) {
+          
+            aiAdvice.innerHTML += '<p>Investing a small amount can be a great start! Consider investing in low-risk options like government bonds or mutual funds.</p>';
+        } else if (amount >= 50 && amount < 200) {
+            aiAdvice.innerHTML += '<p>With this amount, you might want to diversify your investments. Consider a mix of stocks and bonds for balanced growth.</p>';
+        } else {
+
+         // AI investment advice
+if (amount >= 10 && amount < 50) {
+    aiAdvice.innerHTML += "Start with small investments in low-cost index funds to build your investment portfolio.";
+} else if (amount >= 50 && amount < 200) {
+    aiAdvice.innerHTML += "Consider investing in low-risk assets such as bonds or mutual funds.";
+} else if (amount >= 200 && amount < 500) {
+    aiAdvice.innerHTML += "Diversify your portfolio by investing in a mix of stocks and bonds.";
+} else if (amount >= 500 && amount < 1000) {
+    aiAdvice.innerHTML += "Explore index funds or exchange-traded funds (ETFs) for long-term growth potential.";
+} else if (amount >= 1000 && amount < 5000) {
+    aiAdvice.innerHTML += "Consider investing in dividend-paying stocks for passive income.";
+} else if (amount >= 5000 && amount < 10000) {
+    aiAdvice.innerHTML += "Look into real estate investment trusts (REITs) for exposure to the real estate market.";
+} else if (amount >= 10000 && amount < 20000) {
+    aiAdvice.innerHTML += "Consider investing in a mix of stocks, bonds, and real estate for balanced growth.";
+} else if (amount >= 20000 && amount < 50000) {
+    aiAdvice.innerHTML += "Explore growth stocks with high potential returns for aggressive growth strategies.";
+} else if (amount >= 50000 && amount < 100000) {
+    aiAdvice.innerHTML += "Consider diversifying into international markets for global exposure.";
+} else if (amount >= 100000 && amount < 200000) {
+    aiAdvice.innerHTML += "Look into alternative investments like cryptocurrency or commodities for diversification.";
+} else if (amount >= 200000 && amount < 500000) {
+    aiAdvice.innerHTML += "Consider investing in startup companies through venture capital or angel investing.";
+} else if (amount >= 500000 && amount < 1000000) {
+    aiAdvice.innerHTML += "Explore private equity investments for higher potential returns and longer investment horizons.";
+} else if (amount >= 1000000 && amount < 2000000) {
+    aiAdvice.innerHTML += "Consider investing in yourself through education or starting your own business.";
+} else if (amount >= 2000000 && amount < 5000000) {
+    aiAdvice.innerHTML += "Look into philanthropic investments or impact investing for social and environmental impact.";
+} else if (amount >= 5000000 && amount < 10000000) {
+    aiAdvice.innerHTML += "Explore institutional-grade investments like hedge funds or private equity funds for sophisticated strategies.";
+} else if (amount >= 10000000 && amount < 20000000) {
+    aiAdvice.innerHTML += "Consider establishing a family office for comprehensive wealth management and legacy planning.";
+} else if (amount >= 20000000 && amount < 50000000) {
+    aiAdvice.innerHTML += "Look into alternative assets like art, wine, or collectibles for diversification and potential appreciation.";
+} else {
+    aiAdvice.innerHTML += "Your investment amount is substantial. Consider consulting a team of financial advisors for personalized advice and wealth management.";
+}
+
+          
+            aiAdvice.innerHTML += '<p>Investing a larger amount gives you more options. Look into higher-risk investments like stocks or real estate for potentially higher returns.</p>';
+        }
+    }
+       // Example cryptocurrencies for the dropdown
+        const cryptocurrencies = [
+            { value: 'BTC', label: 'Bitcoin (BTC)' },
+            { value: 'ETH', label: 'Ethereum (ETH)' },
+            { value: 'BNB', label: 'Binance Coin (BNB)' },
+            { value: 'ADA', label: 'Cardano (ADA)' },
+            { value: 'DOGE', label: 'Dogecoin (DOGE)' },
+            { value: 'XRP', label: 'Ripple (XRP)' },
+            { value: 'SOL', label: 'Solana (SOL)' },
+        ];
+
+        // Populate cryptocurrency dropdown
+        function populateCryptoOptions() {
+            const select = document.getElementById('alert-crypto');
+            cryptocurrencies.forEach(option => {
+                const optionElement = document.createElement('option');
+                optionElement.value = option.value;
+                optionElement.textContent = option.label;
+                select.appendChild(optionElement);
+            });
+        }
+
+         // Populate dropdown on page load
+        window.onload = populateCryptoOptions;
+        async function fetchGasPrices() {
+            const response = await fetch('https://api.blockcypher.com/v1/eth/main');
+            const data = await response.json();
+            const content = document.getElementById('gas-prices-content');
+            content.innerHTML = `
+                High: ${data.high_gas_price} Gwei<br>
+                Medium: ${data.medium_gas_price} Gwei<br>
+                Low: ${data.low_gas_price} Gwei
+            `;
+        }
+
+        async function fetchMarketData() {
+            const response = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd');
+            const data = await response.json();
+            const content = document.getElementById('market-data-content');
+            content.innerHTML = data.map(coin => `
+                <li>${coin.name} (${coin.symbol.toUpperCase()}): $${coin.current_price}</li>
+            `).join('');
+        }
+
+      async function fetchStockData(symbol) {
+    const apiKey = 'JFBEN6RMCJJYJODM';
+    const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${apiKey}`);
+    const data = await response.json();
+    const price = data['Global Quote']['05. price'];
+    return price;
+       }
+
+        function calculateMining() {
+            const hashrate = document.getElementById('hashrate').value;
+            const blockReward = document.getElementById('block-reward').value;
+            const difficulty = document.getElementById('difficulty').value;
+
+            const result = hashrate * blockReward / difficulty;
+            document.getElementById('mining-result').innerText = `Result: ${result}
+
+      }
+
+        function openPancakeSwap() {
+            window.open('https://pancakeswap.finance/', '_blank');
+        }
+
+        function openUniswap() {
+            window.open('https://app.uniswap.org/', '_blank');
         
-    </div>
 
+      }
 
-    <!--Third section-->
+            fetchGasPrices();
+            fetchMarketData();
+            fetchStockData();
+            fetchCurrencies();
+    </script>
 
-    <div class="about_us">
-        <h1>About Us</h1>
-
-        <div class="superb">
-            <div class="about_celestial">
-                <h2>About CelestiaLink</h2>
-                <p>Welcome to CelestiaLink, where connectivitytranscends boundries and innovation takes flight.At CelestiaLink, we are dedicated to <br> ushering in a new era of seamless communication, ensuring that individuals and businesses <br> stay effortlessly connected to the world.</p>
-            </div>
-
-            <div class="vision">
-                <h2>Our Vision</h2>
-                <p>CelestiaLinkenvisions a future where connectivity is not just a service but an experience that empowers, inspires <br> and transforms lives. We strive to be at the forefront of technological evolution, providing cutting-edge solutions that redefine <br> the way we connect, communicate and collaborate.</p>
-
-                <div class="vanguard">
-                    <p>CelestiaLink is proudly powered by TechVanguard and WebWise, a subsidiary of Mirak Oracle. As part of the esteemed <br> Mirakle Group, along TechVanguard, we draw on a rich legacy of expertise and innovation to deliver solutions that exceed expectations.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--Last section-->
-
-    <section class="footer">
-        <h4>Contact Us</h4>
-        <div class="pizza">
-            <p>If you are looking to enhance your connectivity capabilities, we're here to help. Reach out to us at <br> <a href="mailto:CelestialLinkNet@gmail.com">CelestialLinkNet@gmail.com</a></p>
-        </div>
-        <div class="follow">
-            <ul>
-                <li><a href="https://www.facebook.com/miraklegroup">Facebook</a></li>
-                <li><a href="https://www.instagram.com/mirakle.group">Instagram</a></li>
-                <li><a href="https://twitter.com/mirakle_group">Twitter</a></li>
-            </ul>
-        </div>
-
-        <div class="copy">
-            <p><span>&copy;</span>     CelestiaLink. All rights reserved. Powered by WebWise, a proud subsidiary of Mirak Oracle, and a proud member of the Mirakle Group, along with TechVanguard.</p>
-        </div>
-    </section>
-
-
-
-    
-    
 </body>
 </html>
+        
