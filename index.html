@@ -625,18 +625,56 @@ if (amount >= 10 && amount < 50) {
             { value: 'SOL', label: 'Solana (SOL)' },
         ];
 
-        // Populate cryptocurrency dropdown
-        function populateCryptoOptions() {
-            const select = document.getElementById('alert-crypto');
-            cryptocurrencies.forEach(option => {
-                const optionElement = document.createElement('option');
-                optionElement.value = option.value;
-                optionElement.textContent = option.label;
-                select.appendChild(optionElement);
+         // Store alerts
+        let priceAlerts = [];
+
+        // Function to set a price alert
+        function setPriceAlert() {
+            const crypto = document.getElementById('alert-crypto').value;
+            const price = parseFloat(document.getElementById('alert-price').value);
+
+            if (crypto && price) {
+                priceAlerts.push({ crypto, price });
+                document.getElementById('alert-message').textContent = `Alert set for ${crypto} at $${price}`;
+            } else {
+                document.getElementById('alert-message').textContent = 'Please select a cryptocurrency and enter a valid price.';
+            }
+        }
+      function openDeFiPlatform(platform) {
+        let url = '';
+        if (platform === 'Aave') {
+            url = 'https://app.aave.com/';
+        } else if (platform === 'Compound') {
+            url = 'https://compound.finance/';
+        }
+        window.open(url, '_blank');
+    }
+        // Function to check prices and trigger alerts
+        async function checkPriceAlerts() {
+            const promises = priceAlerts.map(async alert => {
+                const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${alert.crypto.toLowerCase()}&vs_currencies=usd`);
+                const data = await response.json();
+                const currentPrice = data[alert.crypto.toLowerCase()].usd;
+
+                if (currentPrice >= alert.price) {
+                    alertUser(alert.crypto, alert.price, currentPrice);
+                }
             });
+
+            await Promise.all(promises);
         }
 
-         // Populate dropdown on page load
+        // Function to alert the user
+        function alertUser(crypto, alertPrice, currentPrice) {
+            alert(`${crypto} has reached your alert price of $${alertPrice}. Current price: $${currentPrice}`);
+            // Remove the alert from the list
+            priceAlerts = priceAlerts.filter(alert => alert.crypto !== crypto || alert.price !== alertPrice);
+        }
+
+        // Check price alerts periodically
+        setInterval(checkPriceAlerts, 60000); // Check every minute
+
+        // Populate dropdown on page load
         window.onload = populateCryptoOptions;
         async function fetchGasPrices() {
             const response = await fetch('https://api.blockcypher.com/v1/eth/main');
@@ -658,23 +696,14 @@ if (amount >= 10 && amount < 50) {
             `).join('');
         }
 
-      async function fetchStockData(symbol) {
-    const apiKey = 'JFBEN6RMCJJYJODM';
-    const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${apiKey}`);
-    const data = await response.json();
-    const price = data['Global Quote']['05. price'];
-    return price;
-       }
-
         function calculateMining() {
             const hashrate = document.getElementById('hashrate').value;
             const blockReward = document.getElementById('block-reward').value;
             const difficulty = document.getElementById('difficulty').value;
 
             const result = hashrate * blockReward / difficulty;
-            document.getElementById('mining-result').innerText = `Result: ${result}
-
-      }
+            document.getElementById('mining-result').innerText = `Result: ${result}`;
+        }
 
         function openPancakeSwap() {
             window.open('https://pancakeswap.finance/', '_blank');
@@ -682,16 +711,15 @@ if (amount >= 10 && amount < 50) {
 
         function openUniswap() {
             window.open('https://app.uniswap.org/', '_blank');
-        
+        }
 
-      }
-
+        window.onload = async function() {
+            const { cryptocurrencies, fiatCurrencies } = await fetchCurrencyOptions();
+            populateOptions('base-currency', cryptocurrencies);
+            populateOptions('target-currency', fiatCurrencies);
             fetchGasPrices();
             fetchMarketData();
-            fetchStockData();
-            fetchCurrencies();
+        };
     </script>
-
 </body>
 </html>
-        
